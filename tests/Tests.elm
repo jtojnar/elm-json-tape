@@ -16,13 +16,13 @@ all =
         [ describe "Serialisation and deserialisation"
             [ test "encoding of tree" <|
                 \() ->
-                    Expect.equal (EncodeTape.dirTree sampleTree) sampleJsonParsed
+                    (EncodeTape.dirTree sampleTree) |> Expect.equal sampleJsonParsed
             , test "decoding of json-tape" <|
                 \() ->
-                    Expect.equal (Json.decodeString DecodeTape.dirTree sampleJson |> Result.map normaliseTree) (Ok sampleTree)
+                    (Json.decodeString DecodeTape.dirTree sampleJson |> Result.map normaliseTree) |> Expect.equal (Ok sampleTree)
             , test "decoding of invalid json-tape" <|
                 \() ->
-                    Expect.equal (Json.decodeString DecodeTape.dirTree sampleJsonBadKind) (Err "I ran into a `fail` decoder: Unknown kind: badkind")
+                    (Json.decodeString DecodeTape.dirTree sampleJsonBadKind) |> Expect.equal (Err "I ran into a `fail` decoder: Unknown kind: badkind")
             ]
         ]
 
