@@ -13,18 +13,19 @@ import Json.Decode exposing (..)
 -}
 dirTree : Decoder DirTree
 dirTree =
-    ("kind" := string)
-        `andThen`
-            \kind ->
+    (field "kind" string)
+        |> andThen
+            (\kind ->
                 case kind of
                     "file" ->
-                        object2 fillFile ("name" := string) ("content" := string)
+                        map2 fillFile (field "name" string) (field "content" string)
 
                     "directory" ->
-                        object2 fillDir ("name" := string) ("content" := list dirTree)
+                        map2 fillDir (field "name" string) (field "content" (list dirTree))
 
                     _ ->
                         fail ("Unknown kind: " ++ kind)
+            )
 
 
 fillFile : String -> String -> DirTree

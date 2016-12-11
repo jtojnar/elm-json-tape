@@ -53,7 +53,7 @@ getObject path tree =
 readFileRaw : Path -> DirTree -> Result String String
 readFileRaw path tree =
     getObject path tree
-        `Result.andThen`
+        |> Result.andThen
             (\obj ->
                 case obj of
                     Dir _ ->
@@ -68,7 +68,7 @@ readFileRaw path tree =
 -}
 readFile : Path -> DirTree -> Result String String
 readFile path tree =
-    readFileRaw path tree `Result.andThen` Base64.decode
+    readFileRaw path tree |> Result.andThen Base64.decode
 
 
 
