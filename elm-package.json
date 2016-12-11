@@ -1,19 +1,19 @@
 {
+    "version": "1.1.1",
     "summary": "Serialisation of directory trees into JSON.",
+    "repository": "https://github.com/jtojnar/elm-json-tape.git",
+    "license": "MIT",
     "source-directories": [
         "src"
     ],
-    "repository": "https://github.com/jtojnar/elm-json-tape.git",
-    "dependencies": {
-        "elm-lang/core": "5.0.0 <= v < 6.0.0",
-        "truqu/elm-base64": "1.0.0 <= v < 2.0.0"
-    },
     "exposed-modules": [
         "Codec.JsonTape",
         "Codec.JsonTape.Decode",
         "Codec.JsonTape.Encode"
     ],
-    "version": "1.1.0",
-    "elm-version": "0.18.0 <= v < 0.19.0",
-    "license": "MIT"
+    "dependencies": {
+        "elm-lang/core": "5.0.0 <= v < 6.0.0",
+        "truqu/elm-base64": "1.0.0 <= v < 2.0.0"
+    },
+    "elm-version": "0.18.0 <= v < 0.19.0"
 }
